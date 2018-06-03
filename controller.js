@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
 
-router.use(bodyParser.json({ extended: true }));
-router.use(morgan('dev')); // TODO: silence when not in dev
 var Player = require('./model');
 
 router.post('/', function (req, res) {
