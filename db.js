@@ -10,7 +10,12 @@ mongoose.connect(mongoDB, {
 mongoose.Promise = global.Promise;
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
-  console.log('open');
+db.on('connected', function () {
+  console.log('Connected to MongoDB');
+});
+db.on('error', function(err) {
+  console.error('MongoDB connection error:', error);
+});
+db.on('disconnected', function() {
+  console.log('Disconnected from MongoDB');
 });
