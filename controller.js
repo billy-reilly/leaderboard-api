@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 router.use(bodyParser.json({ extended: true }));
+router.use(morgan('dev')); // TODO: silence when not in dev
 var Player = require('./model');
 
 router.post('/', function (req, res) {
-    console.log(req.body);
     if (!req.body.name) {
         return res.status(400).send("Bad request. You must provide a name for the new player");
     } else {

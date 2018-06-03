@@ -9,6 +9,8 @@ mongoose.connect(mongoDB, {
 });
 mongoose.Promise = global.Promise;
 
+mongoose.set('debug', true); // TODO: silence when not in dev
+
 var db = mongoose.connection;
 db.on('connected', function () {
   console.log('Connected to MongoDB');
